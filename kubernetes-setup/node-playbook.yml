@@ -78,6 +78,13 @@
         - kubeadm 
         - kubectl
 
+  - name: Create kubelet config
+    file:
+      path: /etc/default/kubelet
+      owner: root
+      group: root
+      mode: '0644'
+
   - name: Configure node ip
     lineinfile:
       path: /etc/default/kubelet
