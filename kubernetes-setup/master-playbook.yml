@@ -80,6 +80,7 @@
     lineinfile:
       path: /etc/default/kubelet
       line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+      create: yes
 
   - name: Restart kubelet
     service:
@@ -108,18 +109,12 @@
         - kubelet 
         - kubeadm 
         - kubectl
-  
-  - name: Create kubelet config
-    file:
-      path: /etc/default/kubelet
-      owner: root
-      group: root
-      mode: '0644'
 
   - name: Configure node ip
-    file:
+    lineinfile:
       path: /etc/default/kubelet
       line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+      create: yes
 
   - name: Restart kubelet
     service:
