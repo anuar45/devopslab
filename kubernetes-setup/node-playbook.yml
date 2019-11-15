@@ -97,5 +97,5 @@
     command: sh /tmp/join-command.sh
   
   handlers:
-    - name: docker status
-      service: name=docker state=started
+  - name: docker status
+    service: name=docker state=started
