@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Install gitea
+    helm:
+      host: localhost
+      chart:
+        source:
+          type: git
+          location: https://github.com/jfelten/gitea-helm-chart.git
+      state: present
+      name: gitea
+      namespace: default
+      values:
+        service:
+          http:
+            serviceType: NodePort
+            externalPort: 
+            externalHost: 
+        persistence:
+          enabled: true
+          accessMode: ReadWriteOnce
+        config:
+          secretKey: password
+          disableInstaller: true

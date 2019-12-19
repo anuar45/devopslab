@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Install drone
+    helm:
+      host: localhost
+      chart:
+        source:
+        type: git
+        location: https://github.com/helm/charts.git
+        path: stable/drone
+      state: present
+      name: drone
+      namespace: default

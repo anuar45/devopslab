@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Download and Extract Helm into /tmp/helm
+    unarchive:
+      src: https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz
+      dest: /tmp
+      remote_src: yes
+
+  - name: Install Helm binary files
+    copy:
+      src: /tmp/linux-amd64/
+      dest: /usr/local/bin/helm/
