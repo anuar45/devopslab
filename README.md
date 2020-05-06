@@ -1,4 +1,4 @@
-# devopslab
+# kubelab
 
 This project allows to spin up full kubernetes cluster with master and N nodes.
 
